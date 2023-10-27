@@ -19,6 +19,7 @@
 		D447CDAC1FD4FD160011F3E0 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = D447CDAB1FD4FD150011F3E0 /* Default-568h@2x.png */; };
 		D449BAA31FCB6B010004A033 /* ConnectBLEZPrinterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D449BAA21FCB6B010004A033 /* ConnectBLEZPrinterViewController.m */; };
 		D46C9A181FBF659600AEBE8F /* ScanBLEZPrinterTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D46C9A171FBF659600AEBE8F /* ScanBLEZPrinterTableViewController.m */; };
+		FB7E43202AE9BE450001BF34 /* shippingLabel.txt in Resources */ = {isa = PBXBuildFile; fileRef = FB7E431F2AE9BE450001BF34 /* shippingLabel.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -42,6 +43,7 @@
 		D449BAA21FCB6B010004A033 /* ConnectBLEZPrinterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ConnectBLEZPrinterViewController.m; sourceTree = "<group>"; };
 		D46C9A161FBF659600AEBE8F /* ScanBLEZPrinterTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ScanBLEZPrinterTableViewController.h; sourceTree = "<group>"; };
 		D46C9A171FBF659600AEBE8F /* ScanBLEZPrinterTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ScanBLEZPrinterTableViewController.m; sourceTree = "<group>"; };
+		FB7E431F2AE9BE450001BF34 /* shippingLabel.txt */ = {isa = PBXFileReference; lastKnownFileType = text; path = shippingLabel.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,6 +104,7 @@
 				D46C9A171FBF659600AEBE8F /* ScanBLEZPrinterTableViewController.m */,
 				D41FF2F01FBE45F000F40E9A /* ZPrinterLEService.h */,
 				B9F9162015D5806400B3B398 /* Supporting Files */,
+				FB7E431F2AE9BE450001BF34 /* shippingLabel.txt */,
 			);
 			path = ZebraPrinterBLEDemo;
 			sourceTree = "<group>";
@@ -147,7 +150,7 @@
 				ORGANIZATIONNAME = Zebra;
 				TargetAttributes = {
 					B9F9161415D5806400B3B398 = {
-						DevelopmentTeam = W4T6449ACA;
+						DevelopmentTeam = 73L2C3ZW56;
 					};
 				};
 			};
@@ -156,6 +159,7 @@
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
+				English,
 				en,
 			);
 			mainGroup = B9F9160A15D5806400B3B398;
@@ -174,6 +178,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				B9F9162415D5806400B3B398 /* InfoPlist.strings in Resources */,
+				FB7E43202AE9BE450001BF34 /* shippingLabel.txt in Resources */,
 				B9F9163315D5806500B3B398 /* MainStoryboard.storyboard in Resources */,
 				D447CDAC1FD4FD160011F3E0 /* Default-568h@2x.png in Resources */,
 			);
@@ -309,7 +314,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = W4T6449ACA;
+				DEVELOPMENT_TEAM = 73L2C3ZW56;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ZebraPrinterBLEDemo/ZebraPrinterBLEDemo-Info.plist";
@@ -328,7 +333,7 @@
 				CLANG_ENABLE_OBJC_ARC = YES;
 				CLANG_WARN_OBJCPP_ARC_ABI = YES;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = W4T6449ACA;
+				DEVELOPMENT_TEAM = 73L2C3ZW56;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "";
 				INFOPLIST_FILE = "$(SRCROOT)/ZebraPrinterBLEDemo/ZebraPrinterBLEDemo-Info.plist";

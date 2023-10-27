@@ -48,7 +48,20 @@
 
     // Initialize the text views with default ZPL
 //    self.zplTextview.text = @"~hi^XA^FO50,50^ADN,36,20^FDHELLO WORLD!^FS^XZ";
-    self.zplTextview.text = @"~hi^XA^FO20,20^BY3^B3N,N,150,Y,N^FDHello World!^FS^XZ";
+    NSError *error = nil;
+    NSString *filePath = @"shippingLabel"; // Replace with the actual path to your file
+
+    NSString *path = [[NSBundle mainBundle] pathForResource:@"shippingLabel" ofType:@"txt"];
+    NSString *fileContents = [NSString stringWithContentsOfFile:path
+                                                         encoding:NSUTF8StringEncoding
+                                                            error:&error];
+
+    if (fileContents) {
+        NSLog(@"Contents of the file:\n%@", fileContents);
+    } else {
+        NSLog(@"Error reading file: %@", error);
+    }
+    self.zplTextview.text = [NSString stringWithFormat:@"%@", fileContents];
     
     self.zplTextview.layer.borderWidth = 0.5f;
     self.zplTextview.delegate = self;
@@ -148,16 +161,36 @@
 
 }
 
+//- (IBAction)sendZPL2Printer:(id)sender {
+//    // Get the ZPL from the ZPL text view and append newline and carriage return to the end just incase
+//    NSString *zpl = [self.zplTextview.text stringByAppendingString:@"\r\n"];
+//
+//    const char *bytes = [zpl UTF8String];
+//    size_t length = [zpl length];
+//    NSData *payload = [NSData dataWithBytes:bytes length:length];
+//    NSLog(@"Writing payload: %@ length of %zu", payload, length);
+//    [self.selectedPrinter writeValue:payload forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+//}
 - (IBAction)sendZPL2Printer:(id)sender {
-    // Get the ZPL from the ZPL text view and append newline and carriage return to the end just incase
     NSString *zpl = [self.zplTextview.text stringByAppendingString:@"\r\n"];
 
     const char *bytes = [zpl UTF8String];
     size_t length = [zpl length];
     NSData *payload = [NSData dataWithBytes:bytes length:length];
-    NSLog(@"Writing payload: %@ length of %zu", payload, length);
-    [self.selectedPrinter writeValue:payload forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    NSLog(@"Total payload length: %zu", length);
+
+    NSUInteger chunkSize = 20; // Set your desired chunk size
+
+    for (NSUInteger offset = 0; offset < length; offset += chunkSize) {
+        NSUInteger remainingLength = MIN(chunkSize, length - offset);
+        NSRange range = NSMakeRange(offset, remainingLength);
+        NSData *chunk = [payload subdataWithRange:range];
+
+        NSLog(@"Sending chunk of length %zu", remainingLength);
+        [self.selectedPrinter writeValue:chunk forCharacteristic:self.writeCharacteristic type:CBCharacteristicWriteWithResponse];
+    }
 }
+
 
 - (IBAction)doneZPLEdit:(id)sender {
     // Disable the Done button
